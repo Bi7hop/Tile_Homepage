@@ -209,4 +209,24 @@
         </div>
     </footer>
 </body>
+
+
+<!-- Cookie-Banner -->
+<div id="cookie-banner" class="cookie-banner">
+  <p>Diese Website verwendet Cookies, um die Benutzererfahrung zu verbessern. </p>
+  <button id="cookie-accept" class="btn">Akzeptieren</button>
+  <a href="datenschutz.html">Mehr erfahren</a>
+</div>
+<script>
+  (function() {
+    if (localStorage.getItem('cookiesAccepted') === 'true') return;
+    var banner = document.getElementById('cookie-banner');
+    banner.style.display = 'flex';
+    document.getElementById('cookie-accept').onclick = function() {
+      localStorage.setItem('cookiesAccepted','true');
+      banner.style.display = 'none';
+    };
+  })();
+</script>
+
 </html>

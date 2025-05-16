@@ -1,0 +1,384 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes shine {
+    from {
+        background-position: -200% 0;
+    }
+    to {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        transform: rotate(-3deg) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animation classes for various elements */
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slideInFromRight {
+    animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+.animate-slideInFromLeft {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.animate-zoomIn {
+    animation: zoomIn 0.8s ease-out forwards;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Logo animation */
+.logo {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    animation: pulse 1s ease-in-out;
+}
+
+/* Navigation links animation */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+    animation: shine 2s linear infinite;
+    background: linear-gradient(to right, var(--accent-color) 0%, var(--primary-color) 50%, var(--accent-color) 100%);
+    background-size: 200% auto;
+}
+
+/* Hero section animation */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(43, 87, 151, 0.6) 0%, rgba(255, 153, 0, 0.4) 100%);
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    animation: slideInFromLeft 1s ease-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.hero-content p {
+    animation: slideInFromRight 1s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.hero-content .btn {
+    animation: zoomIn 1s ease-out forwards;
+    animation-delay: 0.9s;
+    opacity: 0;
+}
+
+/* Service cards animation */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Button animation */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::after {
+    height: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Skill cards animation */
+.skill-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skill-icon {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Gallery item animation */
+.gallery-item {
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item-caption {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.gallery-item:hover .gallery-item-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Filter buttons animation */
+.filter-btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.filter-btn:hover::after {
+    left: 100%;
+}
+
+/* Contact form animation */
+.form-control {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(43, 87, 151, 0.1);
+}
+
+/* Map container animation */
+.map-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Page entrance animations */
+.page-header h1 {
+    animation: slideInFromLeft 1s ease-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.page-header p {
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+/* Animate on scroll setup */
+.animate-on-scroll {
+    opacity: 0;
+}
+
+.animate-on-scroll.animate-fadeIn {
+    animation: none;
+}
+
+/* Lightbox animations */
+.lightbox.active {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.lightbox-content {
+    animation: zoomIn 0.5s ease-out forwards;
+}
+
+/* Service items animation for the services page */
+.service-item {
+    opacity: 0;
+}
+
+.service-item:nth-child(odd) .service-image {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.service-item:nth-child(odd) .service-details {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.service-item:nth-child(even) .service-image {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.service-item:nth-child(even) .service-details {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.service-item.in-view .service-image,
+.service-item.in-view .service-details {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.service-item.in-view {
+    opacity: 1;
+}

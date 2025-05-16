@@ -26,18 +26,18 @@ function setupMobileNav() {
     });
 
     // Add close button to mobile menu, only if it doesn't exist yet
-    if (!navMenu.querySelector('.menu-close')) {
-        const menuClose = document.createElement('button');
+    if (!navMenu.querySelector('.menu-close') && window.innerWidth <= 767) {
+    const menuClose = document.createElement('button');
         menuClose.className = 'menu-close';
         menuClose.innerHTML = '&times;';
         menuClose.setAttribute('aria-label', 'Close menu');
         navMenu.prepend(menuClose);
 
         menuClose.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            menuToggle.classList.remove('active');
-            document.body.classList.remove('nav-open');
-        });
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.classList.remove('nav-open');
+    });
     }
 
     // Click outside closes the menu

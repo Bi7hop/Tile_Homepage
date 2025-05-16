@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fliesen Runnebaum - Ihr Fliesenleger in Steinfeld</title>
+    <meta name="description" content="Professionelle Fliesenverlegung in Steinfeld und Umgebung. Qualität, Erfahrung und Zuverlässigkeit seit über 20 Jahren.">
+    <link rel="stylesheet" href="assets/css/style.css" defer>
+    <style>
+        /* Critical CSS */
+        :root {
+            --primary-color: #2b5797;
+            --secondary-color: #f8f8f8;
+            --accent-color: #ff9900;
+            --text-color: #333;
+            --light-gray: #e0e0e0;
+            --dark-gray: #444;
+            --white: #fff;
+            --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/mosaik.png');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+    </style>
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Fliesen Runnebaum</a>
+                <button class="menu-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link active">Start</a></li>
+                    <li class="nav-item"><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+                    <li class="nav-item"><a href="galerie.html" class="nav-link">Galerie</a></li>
+                    <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Fliesen Runnebaum</h1>
+                <p>Ihr zuverlässiger Fliesenleger in Steinfeld und Umgebung</p>
+                <a href="kontakt.html" class="btn">Jetzt anfragen</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="container">
+            <div class="about-section">
+                <h2>Willkommen bei Fliesen Runnebaum</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Seit über 20 Jahren sind wir Ihr kompetenter Partner für hochwertige Fliesenarbeiten in Steinfeld und der gesamten Region. Ob Badezimmer, Küche, Wohnbereich oder Terrasse – wir verlegen Ihre Fliesen fachgerecht und mit Liebe zum Detail.</p>
+                        <p>Unsere langjährige Erfahrung und das handwerkliche Können unseres Teams garantieren Ihnen ein perfektes Ergebnis. Wir beraten Sie gerne und setzen Ihre individuellen Wünsche professionell um.</p>
+                        <a href="leistungen.html" class="btn">Unsere Leistungen</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="assets/img/olli.png" alt="Fliesenleger bei der Arbeit" width="400" height="300" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-preview">
+            <div class="container">
+                <h2>Unsere Leistungen im Überblick</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="assets/img/bad.png" alt="Badezimmer" width="300" height="200" loading="lazy">
+                        <h3>Badezimmer</h3>
+                        <p>Moderne Bäder mit hochwertigen Fliesen in verschiedenen Designs und Formaten.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/küche.png" alt="Küche" width="300" height="200" loading="lazy">
+                        <h3>Küche</h3>
+                        <p>Funktionale und stilvolle Fliesenlösungen für Ihre Küche, die höchsten Ansprüchen gerecht werden.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/terasse.png" alt="Terrasse" width="300" height="200" loading="lazy">
+                        <h3>Außenbereich</h3>
+                        <p>Robuste und wetterfeste Fliesen für Terrassen, Balkone und Eingangsbereiche.</p>
+                    </div>
+                </div>
+                <div class="services-cta">
+                    <a href="leistungen.html" class="btn">Alle Leistungen entdecken</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Sind Sie bereit für Ihr neues Fliesenprojekt?</h2>
+                    <p>Kontaktieren Sie uns für eine unverbindliche Beratung und ein individuelles Angebot.</p>
+                    <a href="kontakt.html" class="btn">Jetzt Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="map-section">
+        <div class="container">
+            <h2>Hier finden Sie uns</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19488.590502229807!2d8.380192836889648!3d52.57118990000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9ddd7f45f6d71%3A0x55a8d0f4b5d3af18!2sSteinfeld%2C%20Germany!5e0!3m2!1sen!2sus!4v1721127701744!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Fliesen Runnebaum</h3>
+                    <p>Musterstraße 123<br>49439 Steinfeld</p>
+                    <p>Telefon: 05492 / 12345<br>E-Mail: info@fliesen-runnebaum.de</p>
+                </div>
+                <div class="footer-nav">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Start</a></li>
+                        <li><a href="leistungen.html">Leistungen</a></li>
+                        <li><a href="galerie.html">Galerie</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Öffnungszeiten</h3>
+                    <p>Mo - Fr: 8:00 - 17:00 Uhr<br>Sa: Nach Vereinbarung<br>So: Geschlossen</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fliesen Runnebaum. Alle Rechte vorbehalten.</p>
+                <p><a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

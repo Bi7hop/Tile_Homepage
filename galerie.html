@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Fliesen Runnebaum</title>
+    <meta name="description" content="Entdecken Sie unsere Referenzprojekte. Badezimmer, Küchen, Wohnräume und Außenbereiche mit hochwertigen Fliesenarbeiten in Steinfeld und Umgebung.">
+    <link rel="stylesheet" href="assets/css/style.css" defer>
+    <style>
+        /* Critical CSS */
+        :root {
+            --primary-color: #2b5797;
+            --secondary-color: #f8f8f8;
+            --accent-color: #ff9900;
+            --text-color: #333;
+            --light-gray: #e0e0e0;
+            --dark-gray: #444;
+            --white: #fff;
+            --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .page-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 250px;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-item-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 0.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover .gallery-item-caption {
+            transform: translateY(0);
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border: 3px solid var(--white);
+        }
+        .lightbox-caption {
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            max-width: 80%;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            transform: translateY(-50%);
+        }
+        .lightbox-prev, .lightbox-next {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+        .filter-btn {
+            background-color: var(--light-gray);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+    </style>
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Fliesen Runnebaum</a>
+                <button class="menu-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Start</a></li>
+                    <li class="nav-item"><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+                    <li class="nav-item"><a href="galerie.html" class="nav-link active">Galerie</a></li>
+                    <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Unsere Galerie</h1>
+            <p>Einblicke in unsere Fliesenarbeiten und Referenzprojekte</p>
+        </div>
+    </section>
+
+    <main>
+        <section class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="bad">Badezimmer</button>
+                <button class="filter-btn" data-filter="kueche">Küche</button>
+                <button class="filter-btn" data-filter="wohnbereich">Wohnbereich</button>
+                <button class="filter-btn" data-filter="terrasse">Terrasse</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery">
+                <!-- Badezimmer -->
+                <div class="gallery-item" data-category="bad">
+                    <img src="assets/img/gallery/bad_beton.png" alt="Modernes Badezimmer mit großformatigen Fliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Modernes Badezimmer</h3>
+                        <p>Großformatige Fliesen in Betonoptik</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="bad">
+                    <img src="assets/img/gallery/bad_mosaik.png" alt="Elegantes Badezimmer mit Mosaikfliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Elegantes Badezimmer</h3>
+                        <p>Mosaikfliesen in der Dusche</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="bad">
+                    <img src="assets/img/gallery/bad_natur.png" alt="Badezimmer mit Natursteinfliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Naturstein-Bad</h3>
+                        <p>Warme Erdtöne für Wohlfühlatmosphäre</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="bad">
+                    <img src="assets/img/gallery/bad_muster.png" alt="Modernes Gäste-WC mit Designfliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Modernes Gäste-WC</h3>
+                        <p>Designfliesen mit geometrischem Muster</p>
+                    </div>
+                </div>
+
+                <!-- Küche -->
+                <div class="gallery-item" data-category="kueche">
+                    <img src="assets/img/gallery/kueche1.png" alt="Moderne Küche mit Fliesenspiegel" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Moderne Küche</h3>
+                        <p>Fliesenspiegel in Metrooptik</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="kueche">
+                    <img src="assets/img/gallery/kueche2.png" alt="Landhaus-Küche mit Terrakotta-Fliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Landhaus-Küche</h3>
+                        <p>Terrakotta-Fliesen für rustikale Optik</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="kueche">
+                    <img src="assets/img/gallery/kueche3.png" alt="Offene Küche mit Bodenfliesen in Holzoptik" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Offene Küche</h3>
+                        <p>Bodenfliesen in Holzoptik</p>
+                    </div>
+                </div>
+
+                <!-- Wohnbereich -->
+                <div class="gallery-item" data-category="wohnbereich">
+                    <img src="assets/img/gallery/wohnbereich1.png" alt="Wohnzimmer mit großformatigen Bodenfliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Modernes Wohnzimmer</h3>
+                        <p>Großformatige Bodenfliesen für offenen Wohnraum</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wohnbereich">
+                    <img src="assets/img/gallery/wohnbereich2.png" alt="Esszimmer mit Keramikfliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Elegantes Esszimmer</h3>
+                        <p>Keramikfliesen mit dezenter Musterung</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wohnbereich">
+                    <img src="assets/img/gallery/wohnbereich3.png" alt="Flur mit Fliesenboden" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Moderner Flur</h3>
+                        <p>Pflegeleichter Fliesenboden für den Eingangsbereich</p>
+                    </div>
+                </div>
+
+                <!-- Terrasse -->
+                <div class="gallery-item" data-category="terrasse">
+                    <img src="assets/img/gallery/terrasse1.png" alt="Moderne Terrasse mit Außenfliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Moderne Terrasse</h3>
+                        <p>Frostsichere Außenfliesen in Betonoptik</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="terrasse">
+                    <img src="assets/img/gallery/terrasse2.png" alt="Balkon mit rutschfesten Fliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Balkon</h3>
+                        <p>Rutschfeste Fliesen für mehr Sicherheit</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="terrasse">
+                    <img src="assets/img/gallery/terrasse3.png" alt="Gartenweg mit Natursteinfliesen" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h3>Gartenweg</h3>
+                        <p>Natursteinfliesen für den Außenbereich</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <span class="lightbox-close" id="lightbox-close">&times;</span>
+            <div class="lightbox-content">
+                <img src="" alt="" class="lightbox-img" id="lightbox-img">
+                <div class="lightbox-nav">
+                    <span class="lightbox-prev" id="lightbox-prev">&#10094;</span>
+                    <span class="lightbox-next" id="lightbox-next">&#10095;</span>
+                </div>
+            </div>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Gefällt Ihnen, was Sie sehen?</h2>
+                    <p>Lassen Sie uns gemeinsam Ihr nächstes Fliesenprojekt umsetzen.</p>
+                    <a href="kontakt.html" class="btn">Jetzt Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Fliesen Runnebaum</h3>
+                    <p>Musterstraße 123<br>49439 Steinfeld</p>
+                    <p>Telefon: 05492 / 12345<br>E-Mail: info@fliesen-runnebaum.de</p>
+                </div>
+                <div class="footer-nav">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Start</a></li>
+                        <li><a href="leistungen.html">Leistungen</a></li>
+                        <li><a href="galerie.html">Galerie</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Öffnungszeiten</h3>
+                    <p>Mo - Fr: 8:00 - 17:00 Uhr<br>Sa: Nach Vereinbarung<br>So: Geschlossen</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fliesen Runnebaum. Alle Rechte vorbehalten.</p>
+                <p><a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Kritisches JavaScript für die Galerie
+        document.addEventListener('DOMContentLoaded', function() {
+            // Eventdelegation für die Galerie
+            const gallery = document.getElementById('gallery');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            let currentIndex = 0;
+            let galleryItems = [];
+            
+            // Filtern der Galerie
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Aktiven Button markieren
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Elemente filtern
+                    document.querySelectorAll('.gallery-item').forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Verfügbare Bilder nach dem Filtern aktualisieren
+                    updateGalleryItems();
+                });
+            });
+            
+            // Verfügbare Bilder aktualisieren
+            function updateGalleryItems() {
+                galleryItems = Array.from(document.querySelectorAll('.gallery-item[style="display: block"], .gallery-item:not([style])'));
+            }
+            
+            // Initialisierung
+            updateGalleryItems();
+            
+            // Lightbox öffnen (Eventdelegation)
+            gallery.addEventListener('click', function(e) {
+                const clickedItem = e.target.closest('.gallery-item');
+                if (clickedItem) {
+                    const galleryImg = clickedItem.querySelector('img');
+                    const captionH3 = clickedItem.querySelector('h3');
+                    const captionP = clickedItem.querySelector('p');
+                    
+                    lightboxImg.src = galleryImg.src;
+                    lightboxImg.alt = galleryImg.alt;
+                    
+                    // Caption zusammensetzen
+                    lightboxCaption.innerHTML = '';
+                    if (captionH3) {
+                        const h3 = document.createElement('h3');
+                        h3.textContent = captionH3.textContent;
+                        lightboxCaption.appendChild(h3);
+                    }
+                    if (captionP) {
+                        const p = document.createElement('p');
+                        p.textContent = captionP.textContent;
+                        lightboxCaption.appendChild(p);
+                    }
+                    
+                    // Index des aktuellen Bildes finden
+                    currentIndex = galleryItems.indexOf(clickedItem);
+                    
+                    // Lightbox anzeigen
+                    lightbox.classList.add('active');
+                }
+            });
+            
+            // Lightbox schließen
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+            });
+            
+            // Außerhalb des Bildes klicken, um Lightbox zu schließen
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+            
+            // Navigation: vorheriges Bild
+            lightboxPrev.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                updateLightboxContent(currentIndex);
+            });
+            
+            // Navigation: nächstes Bild
+            lightboxNext.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                updateLightboxContent(currentIndex);
+            });
+            
+            // Tastaturnavigation
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                    updateLightboxContent(currentIndex);
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % galleryItems.length;
+                    updateLightboxContent(currentIndex);
+                }
+            });
+            
+            // Lightbox Inhalte aktualisieren
+            function updateLightboxContent(index) {
+                const item = galleryItems[index];
+                const galleryImg = item.querySelector('img');
+                const captionH3 = item.querySelector('h3');
+                const captionP = item.querySelector('p');
+                
+                lightboxImg.src = galleryImg.src;
+                lightboxImg.alt = galleryImg.alt;
+                
+                // Caption aktualisieren
+                lightboxCaption.innerHTML = '';
+                if (captionH3) {
+                    const h3 = document.createElement('h3');
+                    h3.textContent = captionH3.textContent;
+                    lightboxCaption.appendChild(h3);
+                }
+                if (captionP) {
+                    const p = document.createElement('p');
+                    p.textContent = captionP.textContent;
+                    lightboxCaption.appendChild(p);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

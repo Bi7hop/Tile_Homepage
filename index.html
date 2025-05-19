@@ -5,25 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fliesen Runnebaum - Ihr Fliesenleger in Steinfeld</title>
     <meta name="description" content="Professionelle Fliesenverlegung in Steinfeld und Umgebung. Qualität, Erfahrung und Zuverlässigkeit seit über 20 Jahren.">
-    <link rel="stylesheet" href="assets/css/style.css" defer>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/animations.css">
-    <script src="assets/js/animations.js" defer></script>
+    
     <style>
-        /* Critical CSS */
         :root {
-            --primary-color: #2b5797;
-            --secondary-color: #f8f8f8;
-            --accent-color: #ff9900;
+            --primary-color: #126e82;
+            --secondary-color: #f8f9fa;
+            --accent-color: #d96941;
             --text-color: #333;
-            --light-gray: #e0e0e0;
-            --dark-gray: #444;
+            --light-gray: #e9ecef;
+            --dark-gray: #343a40;
             --white: #fff;
-            --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         body {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
             color: var(--text-color);
         }
         .container {
@@ -43,51 +46,79 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
         }
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-family: 'Montserrat', 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/mosaik.png');
             background-size: cover;
             background-position: center;
-            height: 60vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             color: var(--white);
-            margin-bottom: 2rem;
-        }
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+            margin-bottom: 3rem;
+            position: relative;
         }
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
         }
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
             color: var(--white);
-            padding: 0.8rem 1.5rem;
+            padding: 0.9rem 1.8rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .btn:hover {
-            background-color: #e68a00;
-            transform: translateY(-2px);
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--light-gray);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            border-bottom-color: var(--accent-color);
+            animation: spin 1s infinite ease-in-out;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
+    
+    <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </head>
 <body>
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
     <header class="header">
         <div class="container">
             <nav class="navbar">
@@ -115,20 +146,24 @@
                 <a href="kontakt.html" class="btn">Jetzt anfragen</a>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">&darr;</div>
+            <div>Mehr entdecken</div>
+        </div>
     </section>
 
     <main>
         <section class="container">
             <div class="about-section">
-                <h2>Willkommen bei Fliesen Runnebaum</h2>
+                <h2 class="animate-on-scroll">Willkommen bei Fliesen Runnebaum</h2>
                 <div class="about-content">
-                    <div class="about-text">
+                    <div class="about-text animate-on-scroll">
                         <p>Seit über 20 Jahren sind wir Ihr kompetenter Partner für hochwertige Fliesenarbeiten in Steinfeld und der gesamten Region. Ob Badezimmer, Küche, Wohnbereich oder Terrasse – wir verlegen Ihre Fliesen fachgerecht und mit Liebe zum Detail.</p>
                         <p>Unsere langjährige Erfahrung und das handwerkliche Können unseres Teams garantieren Ihnen ein perfektes Ergebnis. Wir beraten Sie gerne und setzen Ihre individuellen Wünsche professionell um.</p>
                         <a href="leistungen.html" class="btn">Unsere Leistungen</a>
                     </div>
-                    <div class="about-image">
-                        <img src="assets/img/olli.png" alt="Fliesenleger bei der Arbeit" width="400" height="300" loading="lazy">
+                    <div class="about-image animate-on-scroll">
+                        <img src="assets/img/olli.png" alt="Fliesenleger bei der Arbeit" width="600" height="400" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -136,25 +171,25 @@
 
         <section class="services-preview">
             <div class="container">
-                <h2>Unsere Leistungen im Überblick</h2>
+                <h2 class="text-center animate-on-scroll">Unsere Leistungen im Überblick</h2>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <img src="assets/img/bad.png" alt="Badezimmer" width="300" height="200" loading="lazy">
+                    <div class="service-card animate-on-scroll">
+                        <img src="assets/img/bad.png" alt="Badezimmer" width="400" height="300" loading="lazy">
                         <h3>Badezimmer</h3>
                         <p>Moderne Bäder mit hochwertigen Fliesen in verschiedenen Designs und Formaten.</p>
                     </div>
-                    <div class="service-card">
-                        <img src="assets/img/küche.png" alt="Küche" width="300" height="200" loading="lazy">
+                    <div class="service-card animate-on-scroll">
+                        <img src="assets/img/küche.png" alt="Küche" width="400" height="300" loading="lazy">
                         <h3>Küche</h3>
                         <p>Funktionale und stilvolle Fliesenlösungen für Ihre Küche, die höchsten Ansprüchen gerecht werden.</p>
                     </div>
-                    <div class="service-card">
-                        <img src="assets/img/terasse.png" alt="Terrasse" width="300" height="200" loading="lazy">
+                    <div class="service-card animate-on-scroll">
+                        <img src="assets/img/terasse.png" alt="Terrasse" width="400" height="300" loading="lazy">
                         <h3>Außenbereich</h3>
                         <p>Robuste und wetterfeste Fliesen für Terrassen, Balkone und Eingangsbereiche.</p>
                     </div>
                 </div>
-                <div class="services-cta">
+                <div class="services-cta animate-on-scroll">
                     <a href="leistungen.html" class="btn">Alle Leistungen entdecken</a>
                 </div>
             </div>
@@ -173,8 +208,8 @@
 
     <section class="map-section">
         <div class="container">
-            <h2>Hier finden Sie uns</h2>
-            <div class="map-container">
+            <h2 class="animate-on-scroll">Hier finden Sie uns</h2>
+            <div class="map-container animate-on-scroll">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19488.590502229807!2d8.380192836889648!3d52.57118990000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9ddd7f45f6d71%3A0x55a8d0f4b5d3af18!2sSteinfeld%2C%20Germany!5e0!3m2!1sen!2sus!4v1721127701744!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
@@ -208,25 +243,12 @@
             </div>
         </div>
     </footer>
-</body>
+    <a href="#" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</a>
 
-
-<!-- Cookie-Banner -->
-<div id="cookie-banner" class="cookie-banner">
-  <p>Diese Website verwendet Cookies, um die Benutzererfahrung zu verbessern. </p>
-  <button id="cookie-accept" class="btn">Akzeptieren</button>
-  <a href="datenschutz.html">Mehr erfahren</a>
+    <div id="cookie-banner" class="cookie-banner">
+    <p>Diese Website verwendet Cookies, um die Benutzererfahrung zu verbessern.</p>
+    <button id="cookie-accept" class="btn">Akzeptieren</button>
+    <a href="datenschutz.html">Mehr erfahren</a>
 </div>
-<script>
-  (function() {
-    if (localStorage.getItem('cookiesAccepted') === 'true') return;
-    var banner = document.getElementById('cookie-banner');
-    banner.style.display = 'flex';
-    document.getElementById('cookie-accept').onclick = function() {
-      localStorage.setItem('cookiesAccepted','true');
-      banner.style.display = 'none';
-    };
-  })();
-</script>
-
+</body>
 </html>

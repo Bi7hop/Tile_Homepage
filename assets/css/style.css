@@ -1508,3 +1508,405 @@ body {
     background-color: rgba(0,0,0,0.02);
     border-top: 1px solid var(--light-gray);
 }
+
+/* Fliese des Monats Spotlight - angepasst */
+.tile-spotlight {
+    padding: 2rem 0 1rem; /* Oben mehr Abstand zum Hero */
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 5; /* Niedrigerer z-index als beim Hero */
+    background-color: var(--secondary-color); /* Leichter Hintergrundfarben-Kontrast */
+}
+
+.tile-spotlight-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Entfernung des negativen Margins */
+}
+
+.tile-spotlight-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+@media (min-width: 768px) {
+    .tile-spotlight-inner {
+        grid-template-columns: 40% 60%;
+    }
+}
+
+.tile-spotlight-image {
+    position: relative;
+    height: 100%;
+}
+
+.tile-spotlight-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tile-spotlight-badge {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 10px 15px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tile-badge-text {
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tile-badge-month {
+    font-size: 1.1rem;
+}
+
+.tile-spotlight-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile-spotlight-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.tile-spotlight-features {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.tile-spotlight-features span {
+    background: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.tile-spotlight-price {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.price-tag {
+    display: flex;
+    flex-direction: column;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.new-price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Anpassung des Hero-Bereichs, um mehr Abstand nach unten zu lassen */
+.hero {
+    margin-bottom: 0; /* Kein Abstand unten, da der Spotlight-Bereich mit eigenem Padding folgt */
+}
+
+/* Anpassung des Willkommens-Bereichs, der nun nach dem Spotlight kommt */
+.about-section {
+    padding-top: 1.5rem; /* Reduzierter oberer Abstand zum Spotlight */
+}
+
+/* Fliese des Monats Detailseite Styles */
+
+/* Detailbereich */
+.tile-detail-section {
+    padding: 3rem 0;
+}
+
+.tile-detail-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.tile-month-badge {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 0.4rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tile-detail-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+@media (min-width: 992px) {
+    .tile-detail-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Galerie-Bereich */
+.tile-detail-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tile-main-image {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.tile-main-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+.tile-main-image:hover img {
+    transform: scale(1.03);
+}
+
+.tile-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.tile-thumbnails img {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.tile-thumbnails img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Info-Bereich */
+.tile-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tile-price-box {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+.price-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.2rem;
+}
+
+.new-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.price-save {
+    display: inline-block;
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.tile-specs h3, .tile-description h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.tile-specs h3::after, .tile-description h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.specs-list {
+    list-style: none;
+    padding: 0;
+}
+
+.specs-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+}
+
+.specs-list li:last-child {
+    border-bottom: none;
+}
+
+.tile-description p {
+    margin-bottom: 1rem;
+}
+
+.tile-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Archiv-Bereich */
+.tile-archive-section {
+    padding: 4rem 0;
+}
+
+.archive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .archive-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.archive-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.archive-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.archive-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.archive-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.archive-item:hover .archive-image img {
+    transform: scale(1.1);
+}
+
+.archive-badge {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.archive-content {
+    padding: 1.5rem;
+}
+
+.archive-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.archive-content p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.archive-price {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* CTA-Sektion für die Fliesen-Detailseite anpassen */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+}

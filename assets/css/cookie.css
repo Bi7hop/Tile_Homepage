@@ -1,0 +1,50 @@
+/* Cookie Modal Styles */
+.cookie-options {
+    margin: 1.5rem 0;
+}
+
+.cookie-option {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.cookie-option:last-child {
+    border-bottom: none;
+}
+
+.cookie-option input {
+    margin-top: 0.3rem;
+    margin-right: 1rem;
+    transform: scale(1.2);
+}
+
+.cookie-option label {
+    flex: 1;
+}
+
+.cookie-option label p {
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.cookie-info-text {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+@media (max-width: 576px) {
+    .modal-footer {
+        flex-direction: column;
+    }
+}

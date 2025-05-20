@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/cookie.css">
     
     <style>
         :root {
@@ -113,6 +114,7 @@
     
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/cookie.js" defer></script>
 </head>
 <body>
     <div class="preloader">
@@ -271,10 +273,49 @@
     </footer>
     <a href="#" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</a>
 
-    <div id="cookie-banner" class="cookie-banner">
-    <p>Diese Website verwendet Cookies, um die Benutzererfahrung zu verbessern.</p>
-    <button id="cookie-accept" class="btn">Akzeptieren</button>
-    <a href="datenschutz.html">Mehr erfahren</a>
+    <div id="cookie-modal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h3 class="modal-title">Cookie-Einstellungen</h3>
+            <button class="modal-close" id="cookie-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern. Notwendige Cookies werden immer aktiviert. Sie können jedoch wählen, ob Sie Analyse- und Marketing-Cookies zulassen möchten.</p>
+            
+            <div class="cookie-options">
+                <div class="cookie-option">
+                    <input type="checkbox" id="essential-cookies" checked disabled>
+                    <label for="essential-cookies">
+                        <strong>Notwendige Cookies</strong>
+                        <p>Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.</p>
+                    </label>
+                </div>
+                
+                <div class="cookie-option">
+                    <input type="checkbox" id="analytics-cookies">
+                    <label for="analytics-cookies">
+                        <strong>Analyse-Cookies</strong>
+                        <p>Diese Cookies helfen uns, die Nutzung der Website zu verstehen und zu verbessern.</p>
+                    </label>
+                </div>
+                
+                <div class="cookie-option">
+                    <input type="checkbox" id="marketing-cookies">
+                    <label for="marketing-cookies">
+                        <strong>Marketing-Cookies</strong>
+                        <p>Diese Cookies werden verwendet, um relevante Werbung anzuzeigen.</p>
+                    </label>
+                </div>
+            </div>
+            
+            <p class="cookie-info-text">Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="cookie-reject-all" class="btn btn-secondary">Alle ablehnen</button>
+            <button id="cookie-save" class="btn">Auswahl speichern</button>
+            <button id="cookie-accept-all" class="btn">Alle akzeptieren</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>

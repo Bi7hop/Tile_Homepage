@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie - Fliesen Runnebaum</title>
     <meta name="description" content="Entdecken Sie unsere Referenzprojekte. Badezimmer, Küchen, Wohnräume und Außenbereiche mit hochwertigen Fliesenarbeiten in Steinfeld und Umgebung.">
-    <link rel="stylesheet" href="assets/css/style.css" defer>
+     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/galerie.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <script src="assets/js/animations.js" defer></script>
     <style>
@@ -376,148 +378,6 @@
         </div>
     </footer>
 
-    <script>
-    // Critical JavaScript for the gallery
-    document.addEventListener('DOMContentLoaded', function() {
-        // Event delegation for the gallery
-        const gallery = document.getElementById('gallery');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const lightboxClose = document.getElementById('lightbox-close');
-        const lightboxPrev = document.getElementById('lightbox-prev');
-        const lightboxNext = document.getElementById('lightbox-next');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        
-        let currentIndex = 0;
-        let galleryItems = [];
-        
-        // Filtering the gallery
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const filter = this.getAttribute('data-filter');
-                
-                // Mark the active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show/hide items based on the filter
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                
-                // Update available gallery items after filtering
-                updateGalleryItems();
-            });
-        });
-        
-        // Update available gallery items
-        function updateGalleryItems() {
-            galleryItems = Array.from(document.querySelectorAll('.gallery-item[style="display: block"], .gallery-item:not([style])'));
-        }
-        
-        // Initialization
-        updateGalleryItems();
-        
-        // Open lightbox (event delegation)
-        gallery.addEventListener('click', function(e) {
-            const clickedItem = e.target.closest('.gallery-item');
-            if (clickedItem) {
-                const galleryImg = clickedItem.querySelector('img');
-                const captionH3 = clickedItem.querySelector('h3');
-                const captionP = clickedItem.querySelector('p');
-                
-                lightboxImg.src = galleryImg.src;
-                lightboxImg.alt = galleryImg.alt;
-                
-                // Compose caption
-                lightboxCaption.innerHTML = '';
-                if (captionH3) {
-                    const h3 = document.createElement('h3');
-                    h3.textContent = captionH3.textContent;
-                    lightboxCaption.appendChild(h3);
-                }
-                if (captionP) {
-                    const p = document.createElement('p');
-                    p.textContent = captionP.textContent;
-                    lightboxCaption.appendChild(p);
-                }
-                
-                // Find index of the current image
-                currentIndex = galleryItems.indexOf(clickedItem);
-                
-                // Show lightbox
-                lightbox.classList.add('active');
-            }
-        });
-        
-        // Close lightbox
-        lightboxClose.addEventListener('click', function() {
-            lightbox.classList.remove('active');
-        });
-        
-        // Close lightbox by clicking outside the image
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('active');
-            }
-        });
-        
-        // Navigate to previous image
-        lightboxPrev.addEventListener('click', function() {
-            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-            updateLightboxContent(currentIndex);
-        });
-        
-        // Navigate to next image
-        lightboxNext.addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % galleryItems.length;
-            updateLightboxContent(currentIndex);
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (!lightbox.classList.contains('active')) return;
-            
-            if (e.key === 'Escape') {
-                lightbox.classList.remove('active');
-            } else if (e.key === 'ArrowLeft') {
-                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-                updateLightboxContent(currentIndex);
-            } else if (e.key === 'ArrowRight') {
-                currentIndex = (currentIndex + 1) % galleryItems.length;
-                updateLightboxContent(currentIndex);
-            }
-        });
-        
-        // Update lightbox content
-        function updateLightboxContent(index) {
-            const item = galleryItems[index];
-            const galleryImg = item.querySelector('img');
-            const captionH3 = item.querySelector('h3');
-            const captionP = item.querySelector('p');
-            
-            lightboxImg.src = galleryImg.src;
-            lightboxImg.alt = galleryImg.alt;
-            
-            // Update caption
-            lightboxCaption.innerHTML = '';
-            if (captionH3) {
-                const h3 = document.createElement('h3');
-                h3.textContent = captionH3.textContent;
-                lightboxCaption.appendChild(h3);
-            }
-            if (captionP) {
-                const p = document.createElement('p');
-                p.textContent = captionP.textContent;
-                lightboxCaption.appendChild(p);
-            }
-        }
-    });
-</script>
+    <script src="assets/js/gallery.js"></script>
 </body>
 </html>

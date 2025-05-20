@@ -5,55 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impressum – Fliesen Runnebaum</title>
   <meta name="description" content="Impressum von Fliesen Runnebaum – Rechtliche Angaben gemäß § 5 TMG.">
-  <link rel="stylesheet" href="assets/css/style.css" defer>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/common.css">
   <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/common.css" defer>
+  <link rel="stylesheet" href="assets/css/legal-pages.css">
+  
+  <script src="assets/js/main.js" defer></script>
   <script src="assets/js/animations.js" defer></script>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    main.content-section {
-      flex: 1;
-      padding: 2rem 0;
-    }
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    h1, h2, h3 {
-      color: #2b5797;
-    }
-    p, li {
-      margin-bottom: 0.8rem;
-      line-height: 1.6;
-    }
-    /* Menü-Abstände */
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-menu a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-    }
-    .nav-menu a:hover {
-      color: var(--primary-color);
-    }
-  </style>
+  <script src="assets/js/preloader.js" defer></script>
 </head>
 <body>
   <header class="header">
@@ -64,19 +28,24 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu">
-  <li><a href="index.html" class="nav-link active">Start</a></li>
-  <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
-  <li><a href="galerie.html" class="nav-link">Galerie</a></li>
-  <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-</ul>
-
+          <li class="nav-item"><a href="index.html" class="nav-link">Start</a></li>
+          <li class="nav-item"><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+          <li class="nav-item"><a href="galerie.html" class="nav-link">Galerie</a></li>
+          <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main class="content-section">
+  <section class="page-header">
     <div class="container">
       <h1>Impressum</h1>
+      <p>Angaben gemäß § 5 TMG</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="legal-card">
       <h2>Angaben gemäß § 5 TMG</h2>
       <p>Fliesen Runnebaum<br>
          Inhaber: Max Mustermann<br>
@@ -84,41 +53,57 @@
          49439 Steinfeld<br>
          Deutschland
       </p>
+      
       <h2>Kontakt</h2>
       <p>Telefon: 05492 / 12345<br>
          E-Mail: <a href="mailto:info@fliesen-runnebaum.de">info@fliesen-runnebaum.de</a>
       </p>
+      
       <h2>Umsatzsteuer</h2>
       <p>USt-ID gemäß § 27 a UStG: DE123456789</p>
+      
+      <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+      <p>Berufsbezeichnung: Fliesenleger<br>
+      Zuständige Kammer: Handwerkskammer Oldenburg<br>
+      Verliehen in: Deutschland</p>
+      
+      <h2>Streitschlichtung</h2>
+      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      
+      <div class="legal-date">Stand: Mai 2025</div>
     </div>
   </main>
 
-  <footer class="footer" style="background:#333;color:#fff;padding:2rem 0;">
-    <div class="container" style="display:flex;flex-wrap:wrap;gap:2rem;">
-      <div style="flex:1;min-width:200px;">
-        <h3 style="color:#fff;">Fliesen Runnebaum</h3>
-        <p>Musterstraße 123<br>49439 Steinfeld</p>
-        <p>E-Mail: <a href="mailto:info@fliesen-runnebaum.de" style="color:#fff;text-decoration:underline;">info@fliesen-runnebaum.de</a></p>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3>Fliesen Runnebaum</h3>
+          <p>Musterstraße 123<br>49439 Steinfeld</p>
+          <p>Telefon: 05492 / 12345<br>E-Mail: info@fliesen-runnebaum.de</p>
+        </div>
+        <div class="footer-nav">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="leistungen.html">Leistungen</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-hours">
+          <h3>Öffnungszeiten</h3>
+          <p>Mo - Fr: 8:00 - 17:00 Uhr<br>Sa: Nach Vereinbarung<br>So: Geschlossen</p>
+        </div>
       </div>
-      <div style="flex:1;min-width:200px;">
-        <h3 style="color:#fff;">Navigation</h3>
-        <ul style="list-style:none;padding:0;">
-          <li><a href="index.html" style="color:#fff;">Start</a></li>
-          <li><a href="leistungen.html" style="color:#fff;">Leistungen</a></li>
-          <li><a href="galerie.html" style="color:#fff;">Galerie</a></li>
-          <li><a href="kontakt.html" style="color:#fff;">Kontakt</a></li>
-          <li><a href="datenschutz.html" style="color:#fff;">Datenschutz</a></li>
-          <li><a href="impressum.html" style="color:#fff;">Impressum</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Fliesen Runnebaum. Alle Rechte vorbehalten.</p>
+        <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
       </div>
-      <div style="flex:1;min-width:200px;">
-        <h3 style="color:#fff;">Öffnungszeiten</h3>
-        <p>Mo–Fr: 8:00–17:00 Uhr<br>Sa: nach Vereinbarung<br>So: geschlossen</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:1rem;font-size:0.9rem;">
-      &copy; 2025 Fliesen Runnebaum. Alle Rechte vorbehalten.
     </div>
   </footer>
+  
+  <a href="#" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</a>
 </body>
 </html>
